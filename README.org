@@ -8,13 +8,9 @@ I plan on training and deploying a model that will detect if a
 specific wake-word is spoken. If so, it will turn on a LED.
 
 ** Project Milestones
-[ ] - Get a TinyML arduino example running on my BLE Sense board
-
-[ ] - Create a simple model and delpoy it to development board
-
-[ ] - Collect or find dataset to train model
-
-[ ] - Train model using Tensorflow
-
-[ ] - Write firmware for the development board to execute the model
-based on input data from microphone peripheral
+- [ ] Get a TinyML arduino example running on my BLE Sense board
+- [ ] Create a simple model and delpoy it to development board
+- [ ] Collect or find dataset to train model
+- [ ] Train model using Tensorflow
+- [ ] Write firmware for the development board to execute the model
+  based on input data from microphone peripheral
