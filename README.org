@@ -5,6 +5,13 @@ deploy a ML model to run on an embedded device. This model will infer
 what ascii character the user has drawn on a small capacitive touch
 screen and output that character over serial.
 
+** Directory Structure
+~data/~      Contains code for data collection
+
+~firmware/~  Contains code that will run directly on the device
+
+~training/~  Contains code that trains the model
+
 ** Project Milestones
 - [ ] Get a TinyML arduino example running on my BLE Sense board
 - [ ] Create a simple model and delpoy it to development board
