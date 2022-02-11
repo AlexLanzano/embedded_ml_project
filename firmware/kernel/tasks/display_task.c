@@ -18,7 +18,7 @@ static uint32_t g_display_height = 240;
 static bool g_display_task_running = false;
 static task_handle_t g_display_task_handle;
 static uint32_t g_display_task_stack[200] __attribute__((aligned(4)));
-static render_request_t g_render_queue_buffer[10] = {0};
+static render_request_t g_render_queue_buffer[30] = {0};
 static queue_handle_t g_render_queue;
 
 void dma_transfer_complete_handler(dma_handle_t handle)
@@ -133,7 +133,7 @@ error_t display_task_init()
 {
     error_t error;
 
-    error = queue_init(10, sizeof(render_request_t), g_render_queue_buffer, &g_render_queue);
+    error = queue_init(30, sizeof(render_request_t), g_render_queue_buffer, &g_render_queue);
     if (error) {
         return error;
     }

@@ -7,7 +7,7 @@ error_t app_task_init()
 {
     task_handle_t app_handle;
     void (*app_main)(void) = (void (*)(void))0x08010000;
-    uint32_t *app_stack = (uint32_t *)0x2002fb00;
+    uint32_t *app_stack = (uint32_t *)0x20004000;
     return task_manager_init_task(app_main,
                                   1,
                                   320,

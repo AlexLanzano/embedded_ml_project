@@ -50,13 +50,13 @@ ENTRY(Reset_Handler)
 _estack = 0x20002000;    /* end of RAM */
 /* Generate a link error if the stack don't fit into RAM */
 _Min_Stack_Size = 0x500;   /* required amount of stack */
-_framebuffer_start = 0x20004004;
+_framebuffer_start = 0x20013e00;
 _framebuffer_end = 0x20030000;
 /* Specify the memory areas */
 MEMORY
 {
 FLASH (rx)                 : ORIGIN = 0x08000000, LENGTH = 64K
-RAM1 (xrw)                 : ORIGIN = 0x20000004, LENGTH = 0x1ffc
+RAM1 (xrw)                 : ORIGIN = 0x20000004, LENGTH = 0x2ffc
 }
 
 /* Define output sections */
