@@ -138,6 +138,7 @@ static void input_task_query_button_event(uint8_t *prev_button_state, uint32_t *
 
     if (*count >= DEBOUNCE_THRESHOLD) {
         input_event_t event = {0};
+        event.valid = true;
         event.type = EVENT_TYPE_BUTTON;
         event.button_event.type = button_state;
         queue_push(g_input_queue, &event);
