@@ -79,7 +79,7 @@ static error_t graphics_draw_line_low(uint32_t x1, uint32_t y1, uint32_t x2, uin
         }
     }
 
-    request.rect = rect;
+    memcpy(&request.rect, &rect, sizeof(render_request_t));
     request.render_complete = &render_complete;
 
     system_call(SYSTEM_CALL_RENDER, (void *)&request);
@@ -129,7 +129,7 @@ static error_t graphics_draw_line_high(uint32_t x1, uint32_t y1, uint32_t x2, ui
         }
     }
 
-    request.rect = rect;
+    memcpy(&request.rect, &rect, sizeof(render_request_t));
     request.render_complete = &render_complete;
 
     system_call(SYSTEM_CALL_RENDER, (void *)&request);
@@ -159,7 +159,7 @@ static error_t graphics_draw_vertical_line(uint32_t x1, uint32_t y1, uint32_t y2
         framebuffer[g_display_width * y + x1] = color;
     }
 
-    request.rect = rect;
+    memcpy(&request.rect, &rect, sizeof(render_request_t));
     request.render_complete = &render_complete;
 
     system_call(SYSTEM_CALL_RENDER, (void *)&request);
@@ -189,7 +189,7 @@ static error_t graphics_draw_horizontal_line(uint32_t x1, uint32_t y1, uint32_t 
         framebuffer[g_display_width * y1 + x] = color;
     }
 
-    request.rect = rect;
+    memcpy(&request.rect, &rect, sizeof(render_request_t));
     request.render_complete = &render_complete;
 
     system_call(SYSTEM_CALL_RENDER, (void *)&request);

@@ -143,6 +143,9 @@ void __attribute__((naked)) Reset_Handler()
     // Set Interrupt Vector Table Offset
     SCB->VTOR = (uint32_t)interrupt_vector_table;
 
+    // Disable fault on unaligned access
+    SCB->CCR &= ~SCB_CCR_UNALIGN_TRP_Msk;
+
     rcc_reset();
     rcc_set_pll_clock_speed(CONFIG_CLOCK_FREQ);
     rcc_set_system_clock_source(RCC_SYSTEM_CLOCK_SOURCE_PLL);
