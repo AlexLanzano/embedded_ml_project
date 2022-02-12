@@ -1,5 +1,6 @@
 # Generated files
 TAGS
+*.json
 
 # Prerequisites
 *.d
