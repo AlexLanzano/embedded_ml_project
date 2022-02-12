@@ -37,7 +37,7 @@ void main()
 
         if (event.type == EVENT_TYPE_TOUCH) {
            if (event.touch_event.type == TOUCH_EVENT_TYPE_PRESSED) {
-               log_info("%u %u %u %u", event.touch_event.x, event.touch_event.y, prev_x, prev_y);
+               log_info("%u %u", event.touch_event.x, event.touch_event.y);
                if (previous_point_valid) {
                    graphics_draw_line(prev_x, prev_y, event.touch_event.x, event.touch_event.y, COLOR_RED);
                } else {
