@@ -3,8 +3,17 @@
 import serial
 import json
 import copy
+import sys
+
+def print_help():
+    print("data_collector.py [OUTPUT_FILE]")
 
 def main():
+    if len(sys.argv) < 2:
+        print_help()
+        return
+
+    output_file = sys.argv[1]
     running = True
     dataset = {'data': []}
     data = {'label': 'A',
@@ -25,8 +34,8 @@ def main():
                 point = [int(i) for i in point]
                 data['points'].append(point)
     except KeyboardInterrupt:
-        with open('data.json', 'w') as json_file:
+        with open(output_file, 'w') as json_file:
             json.dump(dataset, json_file)
-        print("\nData written to data.json")
+        print("\nData written to {}".format(output_file))
 
 main()
