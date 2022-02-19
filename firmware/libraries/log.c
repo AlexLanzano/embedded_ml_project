@@ -3,14 +3,15 @@
 #include <libraries/log.h>
 #include <libraries/system.h>
 
-static void log_print(char *format, log_message_t *log_message, va_list ap)
+static void log_print(const char *format, log_message_t *log_message, va_list ap)
 {
     if (!format || !log_message) {
         return;
     }
 
-    string_t message = string_init(log_message->message_data, 0, LOG_MSG_MAX_LENGTH);
-    string_t format_string = string(format);
+    string_t message = string_init(log_message->message_data, LOG_MSG_MAX_LENGTH);
+    char format_data[LOG_MSG_MAX_LENGTH] = {0};
+    string_t format_string = string_init_from_cstring(format_data, format, LOG_MSG_MAX_LENGTH);
 
     if (message.error || format_string.error) {
         return;
@@ -22,7 +23,7 @@ static void log_print(char *format, log_message_t *log_message, va_list ap)
     system_call(SYSTEM_CALL_LOG, (void *)log_message);
 }
 
-void log(log_level_t log_level, char *format, ...)
+void log(log_level_t log_level, const char *format, ...)
 {
     if (!format) {
         return;
@@ -37,7 +38,7 @@ void log(log_level_t log_level, char *format, ...)
     va_end(ap);
 }
 
-void log_error(error_t error, char *format, ...)
+void log_error(error_t error, const char *format, ...)
 {
     if ( !format) {
         return;
@@ -53,7 +54,7 @@ void log_error(error_t error, char *format, ...)
     va_end(ap);
 }
 
-void log_info(char *format, ...)
+void log_info(const char *format, ...)
 {
     if (!format) {
         return;
@@ -68,7 +69,7 @@ void log_info(char *format, ...)
     va_end(ap);
 }
 
-void log_debug(char *format, ...)
+void log_debug(const char *format, ...)
 {
     if (!format) {
         return;
