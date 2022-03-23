@@ -18,21 +18,22 @@ def main():
     dataset = {'data': []}
     data = {'label': 'A',
             'points': []}
+    points = []
 
     serial_device = serial.Serial("/dev/ttyUSB0", 115200);
     try:
         while True:
-            input_data = serial_device.read_until().decode('ascii').strip();
-
-            if input_data == "DONE":
-                new_data = copy.deepcopy(data)
-                dataset['data'].append(new_data)
-                data['points'] = []
                 print("Data count: {}".format(len(dataset['data'])))
+
+            elif input_data == "RELEASED":
+                new_points = copy.deepcopy(points)
+                data['points'].append(new_points)
+                points = []
+
             else:
                 point = input_data.split(" ")
                 point = [int(i) for i in point]
-                data['points'].append(point)
+                points.append(point)
     except KeyboardInterrupt:
         with open(output_file, 'w') as json_file:
             json.dump(dataset, json_file)

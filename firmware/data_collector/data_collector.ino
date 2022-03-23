@@ -30,15 +30,19 @@ static void handle_touch_event()
 
     ft6336_event event = touch_screen.read_event();
     if (event.type == FT6336_EVENT_TYPE_PRESSED) {
-        print_touch_event(&Serial1, event);
         if (prev_touch_event_valid) {
+            print_touch_event(&Serial1, event);
             tft.drawLine(event.x, event.y, prev_touch_event.x, prev_touch_event.y, ST77XX_RED);
         } else {
+            print_touch_event(&Serial1, event);
             tft.drawPixel(event.x, event.y, ST77XX_RED);
             prev_touch_event_valid = true;
         }
         prev_touch_event = event;
     } else if (event.type == FT6336_EVENT_TYPE_RELEASED) {
+        if (prev_touch_event_valid == true) {
+            Serial1.println("RELEASED");
+        }
         prev_touch_event_valid = false;
     }
 }
