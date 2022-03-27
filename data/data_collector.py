@@ -23,6 +23,12 @@ def main():
     serial_device = serial.Serial("/dev/ttyUSB0", 115200);
     try:
         while True:
+            input_data = serial_device.read_until().decode('ascii').strip();
+
+            if input_data == "DONE":
+                new_data = copy.deepcopy(data)
+                dataset['data'].append(new_data)
+                data['points'] = []
                 print("Data count: {}".format(len(dataset['data'])))
 
             elif input_data == "RELEASED":
