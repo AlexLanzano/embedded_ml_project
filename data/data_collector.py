@@ -6,17 +6,18 @@ import copy
 import sys
 
 def print_help():
-    print("data_collector.py [OUTPUT_FILE]")
+    print("data_collector.py [DATA_LABEL] [OUTPUT_FILE]")
 
 def main():
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         print_help()
         return
 
-    output_file = sys.argv[1]
+    data_label = sys.argv[1]
+    output_file = sys.argv[2]
     running = True
     dataset = {'data': []}
-    data = {'label': 'A',
+    data = {'label': data_label,
             'points': []}
     points = []
 
