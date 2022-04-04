@@ -69,6 +69,7 @@ def main():
     with open(input_file, 'r') as json_file:
         input_dataset = json.load(json_file)
         for input_data in input_dataset['data']:
+            output_data['label'] = input_data['label']
             output_data['framebuffer'] = [1] * (240*240)
             for points in input_data['points']:
                 prev_point = None
