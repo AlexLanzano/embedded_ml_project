@@ -155,6 +155,12 @@ static error_t graphics_draw_vertical_line(uint32_t x1, uint32_t y1, uint32_t y2
 
     framebuffer = (color16_t *)_framebuffer_start;
 
+    if (y1 > y2) {
+        uint32_t temp = y1;
+        y1 = y2;
+        y2 = temp;
+    }
+
     for (uint32_t y = y1; y < y2; y++) {
         framebuffer[g_display_width * y + x1] = color;
     }
@@ -184,6 +190,12 @@ static error_t graphics_draw_horizontal_line(uint32_t x1, uint32_t y1, uint32_t 
     }
 
     framebuffer = (color16_t *)_framebuffer_start;
+
+    if (x1 > x2) {
+        uint32_t temp = x1;
+        x1 = x2;
+        x2 = temp;
+    }
 
     for (uint32_t x = x1; x < x2; x++) {
         framebuffer[g_display_width * y1 + x] = color;
