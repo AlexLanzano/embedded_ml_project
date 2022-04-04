@@ -70,7 +70,7 @@ def main():
     model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
 
     print("Fitting Model...")
-    model.fit(train_images, train_labels, epochs=10, shuffle=True)
+    model.fit(train_images, train_labels, epochs=20, shuffle=True)
 
     print("Evaluating Model...")
     test_loss, test_acc = model.evaluate(test_images, test_labels)
