@@ -11,7 +11,7 @@ def swap(a, b):
     return b, a
 
 def draw_point(framebuffer, point):
-    framebuffer[point[1]*240+point[0]] = 0
+    framebuffer[point[1]*30+point[0]] = 0
     return framebuffer
 
 def draw_line(framebuffer, point1, point2):
@@ -55,6 +55,12 @@ def draw_line(framebuffer, point1, point2):
 
     return framebuffer
 
+def map_point(point):
+    p = []
+    p.append(point[0] // 8)
+    p.append(point[1] // 8)
+    return p
+
 def main():
     if len(sys.argv) < 3:
         print_help()
@@ -70,10 +76,11 @@ def main():
         input_dataset = json.load(json_file)
         for input_data in input_dataset['data']:
             output_data['label'] = input_data['label']
-            output_data['framebuffer'] = [1] * (240*240)
+            output_data['framebuffer'] = [1] * (30*30)
             for points in input_data['points']:
                 prev_point = None
                 for point in points:
+                    point = map_point(point)
                     if (prev_point == None):
                         output_data['framebuffer'] = draw_point(output_data['framebuffer'], point)
                     else:

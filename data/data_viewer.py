@@ -24,7 +24,7 @@ def render_framebuffer(surface, framebuffer):
         rect[0] = x * 3
         rect[1] = y * 3
         pygame.draw.rect(surface, color, rect)
-        if (x < 239):
+        if (x < 29):
             x += 1
         else:
             x = 0

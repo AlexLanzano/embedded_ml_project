@@ -61,8 +61,8 @@ def main():
 
     print("Creating Model...")
     model = keras.Sequential([
-        keras.layers.Input(shape=(57600)),
-        keras.layers.Dense(128, activation="relu"),
+        keras.layers.Input(shape=(900)),
+        keras.layers.Dense(8, activation="relu"),
         keras.layers.Dense(2, activation="softmax")
     ])
 
@@ -75,5 +75,13 @@ def main():
     print("Evaluating Model...")
     test_loss, test_acc = model.evaluate(test_images, test_labels)
     print("\n Test Accuracy: ", test_acc)
+
+    print("Converting Model to tflite Model...")
+    converter = tf.lite.TFLiteConverter.from_keras_model(model)
+    tflite_model = converter.convert()
+
+    print("Saving Model...")
+    with open('model.tflite', 'wb') as f:
+        f.write(tflite_model)
 
 main()
