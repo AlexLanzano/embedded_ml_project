@@ -81,7 +81,7 @@ static void input_task_query_touch_event(bool *display_touched, uint32_t *count)
     gpio_read(g_int_pin_handle, &touch_not_detected);
     if (touch_not_detected) {
         if (*display_touched) {
-            if (*count > 10000) {
+            if (*count > 1000) {
                 event.valid = true;
                 event.type = EVENT_TYPE_TOUCH;
                 event.touch_event.type = 1;
