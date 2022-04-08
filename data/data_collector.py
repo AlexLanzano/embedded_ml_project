@@ -42,6 +42,7 @@ def main():
                 point = [int(i) for i in point]
                 points.append(point)
     except KeyboardInterrupt:
+        serial_device.close()
         with open(output_file, 'w') as json_file:
             json.dump(dataset, json_file)
         print("\nData written to {}".format(output_file))

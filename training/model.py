@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import json
 import random
 import copy
@@ -34,22 +36,18 @@ def get_label_data(dataset):
 
 def main():
     print("Opening Data Files...")
-    train_A_data_file = open("../data/train_frame_data_A.json", "r")
-    test_A_data_file = open("../data/test_frame_data_A.json", "r")
-    train_B_data_file = open("../data/train_frame_data_B.json", "r")
-    test_B_data_file = open("../data/test_frame_data_B.json", "r")
+    train_data_file = open("../data/train_data.json", "r")
+    test_data_file = open("../data/test_data.json", "r")
 
     print("Loading Data...")
-    train_A_data = json.load(train_A_data_file)
-    test_A_data = json.load(test_A_data_file)
-    train_B_data = json.load(train_B_data_file)
-    test_B_data = json.load(test_B_data_file)
+    train_data = json.load(train_data_file)
+    test_data = json.load(test_data_file)
 
     print("Processing Data")
-    train_images = get_image_data(train_A_data) + get_image_data(train_B_data)
-    test_images = get_image_data(test_A_data) + get_image_data(test_B_data)
-    train_labels = get_label_data(train_A_data) + get_label_data(train_B_data)
-    test_labels = get_label_data(test_A_data) + get_label_data(test_B_data)
+    train_images = get_image_data(train_data)
+    test_images = get_image_data(test_data)
+    train_labels = get_label_data(train_data)
+    test_labels = get_label_data(test_data)
 
     train_images = np.asarray(train_images)
     test_images = np.asarray(test_images)
@@ -62,7 +60,7 @@ def main():
     print("Creating Model...")
     model = keras.Sequential([
         keras.layers.Input(shape=(900)),
-        keras.layers.Dense(8, activation="relu"),
+        keras.layers.Dense(64, activation="relu"),
         keras.layers.Dense(2, activation="softmax")
     ])
 
@@ -70,7 +68,7 @@ def main():
     model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
 
     print("Fitting Model...")
-    model.fit(train_images, train_labels, epochs=20, shuffle=True)
+    model.fit(train_images, train_labels, epochs=40, shuffle=True)
 
     print("Evaluating Model...")
     test_loss, test_acc = model.evaluate(test_images, test_labels)
