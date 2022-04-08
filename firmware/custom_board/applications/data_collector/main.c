@@ -48,6 +48,7 @@ void main()
                prev_y = event.touch_event.y;
 
            } else if (event.touch_event.type == TOUCH_EVENT_TYPE_RELEASED) {
+               log_info("RELEASED");
                previous_point_valid = false;
 
            }
