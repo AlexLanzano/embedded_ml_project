@@ -1,5 +1,6 @@
 # Generated files
 TAGS
+*.tflite
 *.json
 
 # Prerequisites
