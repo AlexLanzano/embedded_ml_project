@@ -2,6 +2,7 @@
 TAGS
 *.tflite
 *.json
+model_tflite.*
 
 # Prerequisites
 *.d
