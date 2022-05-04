@@ -1,7 +1,7 @@
 export MCU = stm32wb55xx
 export SEAMOS_LIB = $(PWD)/SeamOS.a
 export CONFIG = $(PWD)/kernel/config
-SEAMOS_PATH = ../../
+SEAMOS_PATH = SeamOS/
 GCC = $(COMPILER)gcc
 LD = $(COMPILER)ld
 OBJCOPY = $(COMPILER)objcopy

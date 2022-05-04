@@ -1,0 +1,3 @@
+[submodule "firmware/custom_board/SeamOS"]
+	path = firmware/custom_board/SeamOS
+	url = git@github.com:AlexLanzano/SeamOS.git

@@ -1,0 +1,24 @@
+* Data
+These are a collection of scripts used to process the raw data from
+the device into a format the model can train on. Currently, the data
+is stored in the data.zip file.
+
+*** data_collector.py
+This script listens on a serial device for the touch events reported
+and sent over serial by the device. The data is then labeled and
+stored in a specified JSON file.
+
+*** data_converter.py
+This script takes the point data (stored in the JSON file created by
+data_collector.py) and plots it on a 30x30 array that represents the
+framebuffer, then stores that in a JSON file. The capacitive touch
+screen is 240x240 display but in order to reduce the model size the
+points are translated to a 30x30 plane.
+
+*** data_combiner.py
+This script simply takes two data files and combines them into one
+file.
+
+*** data_view.py
+This script allows you to inspect the data by presenting the
+framebuffer graphically.

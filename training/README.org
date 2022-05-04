@@ -1,0 +1,9 @@
+* training
+This directory contains the scripts to train and build the model.
+
+** How to build/train and install the model
+You need to unzip the data.zip file in the ~data~ directory before you build.
+#+BEGIN_SRC
+make
+make install
+#+END_SRC

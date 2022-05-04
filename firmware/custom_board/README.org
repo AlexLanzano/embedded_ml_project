@@ -1,10 +1,8 @@
-* Firmware
-This repository contains the firmware and application source code for
-the embedded ML project. There are two applications that can be run on
-the device. The first is the *data_collector* application which allows
-the user to collect touch input data over serial to train the
-model. Next is the *ML* application which takes touch input and sends
-the inferred ascii character that was drawn over a serial interface.
+* custom_board
+This directory contains the firmware and application code for my
+custom ARM board. Right now, my custom board only supports running the
+data_collector application which simply sends the touch events over
+serial to the data_collector.py script
 
 ** Directory Structure
 ~applications/~ Contains the application code that gets executed from kernel space.
@@ -15,3 +13,11 @@ the inferred ascii character that was drawn over a serial interface.
                 tasks, and initializing/starting the task manager.
 
 ~libraries/~    Contains code that is utilized within various application code
+
+~SeamOS/~       Contains the RTOS libraries and drivers used for this project
+
+** How to build and flash
+#+BEGIN_SRC
+COMPILER=/path/to/arm-none-eabi/complier make
+make flash
+#+END_SRC

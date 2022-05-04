@@ -1,0 +1,26 @@
+* arduino
+This directory contains the application and firmware code for the
+Arduino Nano BLE Sense 33. This device supports two applications
+"ml_app" and "data_collector"
+
+** data_collector
+The data collector app sends the touch screen events over to serial to
+be read by the data_collector.py script
+
+** ml_app
+The ml app waits for the user to draw an "A" or "B" on the capacitive
+touch screen. The model will then determine which character was drawn
+and output the symbol over serial.
+
+** How to build and flash
+First ensure that you have built and installed the model. Directions
+for that are in the README in the ~training~ directory.
+#+BEGIN_SRC
+// Build/flash data_collector app
+make compile_data_collector
+make upload_data_collector
+
+// Build/flash ml app
+make compile_ml_app
+make flash_ml_app
+#+END_SRC

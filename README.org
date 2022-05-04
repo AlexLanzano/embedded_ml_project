@@ -1,21 +1,12 @@
-* Embedded ML Project
-This repository contains the code for my Embedded ML Project. In this
-project I plan to utilize the TensorFlow Lite framework to train and
-deploy a ML model to run on an embedded device. This model will infer
-what ascii character the user has drawn on a small capacitive touch
-screen and output that character over serial.
+* Touch to serial
+A collection of firmware and application code to gather data, train
+the model, and execute the model on an embedded device. The model
+takes in input from the capacitive touch screen and outputs an "A" or
+"B" depending on what the user drew.
 
 ** Directory Structure
-~data/~      Contains code for data collection
+~data/~      Contains code for data collection and processing
 
 ~firmware/~  Contains code that will run directly on the device
 
-~training/~  Contains code that trains the model
-
-** Project Milestones
-- [ ] Get a TinyML arduino example running on my BLE Sense board
-- [ ] Create a simple model and delpoy it to development board
-- [ ] Collect or find dataset to train model
-- [ ] Train model using Tensorflow
-- [ ] Write firmware for the development board to execute the model
-  based on input data from capacitive touch screen
+~training/~  Contains code that builds and trains the model
